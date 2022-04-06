@@ -15,7 +15,7 @@ setup(
     # Version number (initial):
     version="0.1.0",
 
-    description='''A public API for CKAN's validator functions''',
+    description='''An extendable script to update the metadata of a CKAN package''',
     long_description=long_description,
 
     # Application author details:
@@ -29,14 +29,15 @@ setup(
     # simple. Or you can use find_packages().
     packages=find_packages(include=['berlinonline', 'berlinonline*']),
 
+    scripts=['bin/metadata_updater'],
+
     # Include additional files into the package
     include_package_data=True,
 
     # Details
     url="https://github.com/berlinonline/ckan_metadata_updater",
 
-    #
-    # license="LICENSE.txt",
+    license="LICENSE",
 
     # Dependent packages (distributions)
     install_requires=[
