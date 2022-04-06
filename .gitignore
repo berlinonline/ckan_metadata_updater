@@ -31,9 +31,3 @@ pip-delete-this-directory.txt
 
 # dev stuff
 .vscode/
-
-# venv
-bin
-include
-lib
-pyvenv.cfg
