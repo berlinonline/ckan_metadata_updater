@@ -37,10 +37,23 @@ setup(
     # Details
     url="https://github.com/berlinonline/ckan_metadata_updater",
 
-    license="LICENSE",
+    license="MIT License",
 
     # Dependent packages (distributions)
     install_requires=[
         "ckanapi",
     ],
+
+    # See https://pypi.python.org/pypi?%3Aaction=list_classifiers
+    classifiers=[
+        'Development Status :: 4 - Beta',
+
+        # Pick your license as you wish (should match "license" above)
+        'License :: OSI Approved :: MIT License',
+
+        # Specify the Python versions you support here. In particular, ensure
+        # that you indicate whether you support Python 2, Python 3 or both.
+        'Programming Language :: Python :: 3',
+    ],
+
 )
