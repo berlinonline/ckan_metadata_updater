@@ -10,7 +10,7 @@ with open(path.join(here, 'README.md'), encoding='utf-8') as f:
 
 setup(
     # Application name:
-    name="CKAN Metadata Updater",
+    name="ckan-metadata-updater",
 
     # Version number (initial):
     version="0.1.0",
