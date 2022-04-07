@@ -77,7 +77,7 @@ Because writing to CKAN usually requires authentication, we need an environment 
 The simplest way to run the CKAN Metadata Updater is to run the `metadata_updater` command line tool that comes with the installation:
 
 ```
-(updater) % metadata_updater --help                                                                                   (master)ckan_metadata_updater ●
+(updater) % metadata_updater --help
 usage: metadata_updater [-h] [-p PATCH] [-c CONFIG] [-d DATE]
 
 Get the current metadata of a dataset from CKAN, modify it locally and write it back to CKAN.
