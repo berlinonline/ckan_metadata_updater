@@ -75,6 +75,8 @@ class CKANMetadataUpdater:
 
     def write_remote_metadata(self):
         logging.info(f" writing metadata")
+        response = self.connector.action.package_update(self.dataset_metadata)
+        logging.info(f" response: {response}")
 
     def run(self):
         # get metadata from CKAN
