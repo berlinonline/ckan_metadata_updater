@@ -70,15 +70,12 @@ class CKANMetadataUpdater:
             self.conf_data = config['conf_data']
 
         datenregister_base = self.conf_data['ckan_base']
-        dataset_id = self.patch_data['id']
 
         api_token = os.environ['CKAN_TOKEN']
         ua_string = 'berlin_dataset_updater/1.0 (+https://github.com/berlinonline/berlin_dataset_updater)'
 
         logging.info(f" setting up CKAN connector at {datenregister_base} (as '{ua_string}')")
         self.connector = RemoteCKAN(datenregister_base, apikey=api_token, user_agent=ua_string)
-
-        self.get_remote_metadata(dataset_id)
 
         self.steps = [
             {"function": apply_patch, "parameters": [self.patch_data]},
@@ -93,9 +90,15 @@ class CKANMetadataUpdater:
         logging.info(f" writing metadata")
 
     def run(self):
+        # get metadata from CKAN
+        self.get_remote_metadata(self.patch_data['id'])
+
+        # execute steps to modify metadata
         for step in self.steps:
             logging.info(f" running {step['function']}")
             _function = step['function']
             params = step['parameters']
             _function(self.dataset_metadata, *params)
+
+        # write metadata back to CKAN
         self.write_remote_metadata()
