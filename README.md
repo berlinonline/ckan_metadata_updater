@@ -182,7 +182,6 @@ def update_temporal_coverage_to(dataset_metadata: dict):
     today = date.today()
     first = today.replace(day=1)
     lastMonth = (first - timedelta(days=1)).isoformat()
-    logging.info(f" setting `temporal_coverage_to` to {lastMonth}")
     dataset_metadata['temporal_coverage_to'] = lastMonth
     return dataset_metadata
 ```
@@ -221,7 +220,7 @@ from berlinonline.ckan_metadata_updater import CKANMetadataUpdater
 
 # custom step functions:
 def update_temporal_coverage_to(dataset_metadata: dict):
-    # calculate the last day of the previous month
+    '''Set `temporal_coverage_to` to the last day of the previous month.'''
     today = date.today()
     first = today.replace(day=1)
     lastMonth = (first - timedelta(days=1)).isoformat()
