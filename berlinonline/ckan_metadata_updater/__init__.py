@@ -52,7 +52,7 @@ class CKANMetadataUpdater:
         datenregister_base = self.conf_data['ckan_base']
 
         api_token = os.environ['CKAN_TOKEN']
-        ua_string = 'berlin_dataset_updater/1.0 (+https://github.com/berlinonline/berlin_dataset_updater)'
+        ua_string = 'ckan_metadata_updater/0.2.0 (+https://github.com/berlinonline/ckan_metadata_updater)'
 
         logging.info(f" setting up CKAN connector at {datenregister_base} (as '{ua_string}')")
         self.connector = RemoteCKAN(datenregister_base, apikey=api_token, user_agent=ua_string)
