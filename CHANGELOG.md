@@ -3,7 +3,7 @@
 ## Development
 
 - Fix user agent string (correct version and link).
-- Slightly extend the code examples for custom steps.
+- Bring code examples up-to-date.
 
 ## [0.2.0](https://github.com/berlinonline/ckan_metadata_updater/releases/tag/0.2.0)
 

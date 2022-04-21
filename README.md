@@ -128,6 +128,7 @@ INFO:root: apply_patch - berlin_source: api-gitaction
 INFO:root: running <function set_date_updated at 0x10fdc38b0>
 INFO:root: setting `date_updated` to 2022-04-06
 INFO:root: writing metadata
+INFO:root: response: {'berlin_type': 'datensatz', ... }
 ```
 
 This will:
