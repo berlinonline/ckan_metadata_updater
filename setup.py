@@ -13,7 +13,7 @@ setup(
     name="ckan-metadata-updater",
 
     # Version number (initial):
-    version="0.1.0",
+    version="0.2.0",
 
     description='''An extendable script to update the metadata of a CKAN package''',
     long_description=long_description,
