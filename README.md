@@ -39,32 +39,58 @@ The following example uses a venv.
 
 To work, the updater has a few prerequisites:
 
+#### Config File
+
+By default, all configuration is located in a JSON file located at `conf/ckan_updater.json` (relative to where the updater is run).
+The config information in the file is grouped into different sections:
+
+```json
+{
+    "dataset": {
+        ...
+    },
+    "connection": {
+        ...
+    }
+}
+```
+
 #### Patch Metadata
 
 We need the dataset metadata that we want to patch over the existing metadata.
-By default, this patch metadata comes from a JSON file located at `metadata/dataset.json` (relative to where the updater is run).
+By default, this patch metadata comes from the config file's `dataset` object.
 The data needs to conform to the format accepted by the [package_create](http://docs.ckan.org/en/latest/api/index.html#ckan.logic.action.create.package_create "Documentation for the 'package_create' method from CKAN's Action API") method of the CKAN API, and needs to at least have the `id` field set.
 Other metadata can be set as needed.
 
 ```json
 {
-    "id": "name_or_id_of_the_dataset",
-    "berlin_source": "api-gitaction"
+    "dataset": {
+        "id": "name_or_id_of_the_dataset",
+        "berlin_source": "api-gitaction"
+    },
+    "connection": {
+        ...
+    }
 }
 ```
 
 Each attribute in the dataset's metadata that is also present in the patch metadata will be replaced by it. 
 
-#### Config File
+#### Other Configuration
 
-We also need some configuration settings.
-By default, the settings come from a JSON file located at `conf/ckan_settings.json`.
+We also need some additional configuration settings.
+By default, these settings come from the config file's `connection` object.
 At the least, this needs to contain the base URL of the CKAN installation we want to connect to.
 Other configuration can be added if needed.
 
 ```json
 {
-    "ckan_base": "https://url.of.ckan.net"
+    "dataset": {
+        ...
+    },
+    "connection": {
+        "ckan_base": "https://url.of.ckan.net"
+    }
 }
 ```
 
@@ -84,14 +110,12 @@ Get the current metadata of a dataset from CKAN, modify it locally and write it 
 
 optional arguments:
   -h, --help            show this help message and exit
-  -p PATCH, --patch PATCH
-                        Path to the JSON file containing the new (partial) metadata. Default is `metadata/dataset.json`.
   -c CONFIG, --config CONFIG
-                        Path to the JSON file containing the settings for connecting to CKAN. Default is `conf/ckan_settings.json`.
+                        Path to the JSON file containing all settings. Default is `conf/ckan_updater.json`.
   -d DATE, --date DATE  The date to be used as `date_updated`. Default is today.
 ```
 
-If patch metadata and config file are present at the default locations, `metadata_updater` can be run without any arguments:
+If the config file is present at the default location, `metadata_updater` can be run without any arguments:
 
 ```
 (updater) berlin_dataportal_usage % metadata_updater

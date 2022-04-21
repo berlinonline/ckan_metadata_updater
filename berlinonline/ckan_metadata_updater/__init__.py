@@ -28,14 +28,10 @@ class CKANMetadataUpdater:
     def init_parser(self):
         parser = argparse.ArgumentParser(
             description="Get the current metadata of a dataset from CKAN, modify it locally and write it back to CKAN.")
-        parser.add_argument('-p', '--patch',
-                            default=Path('metadata/dataset.json'),
-                            type=Path,
-                            help="Path to the JSON file containing the new (partial) metadata. Default is `metadata/dataset.json`.")
         parser.add_argument('-c', '--config',
-                            default=Path('conf/ckan_settings.json'),
+                            default=Path('conf/ckan_updater.json'),
                             type=Path,
-                            help="Path to the JSON file containing the settings for connecting to CKAN. Default is `conf/ckan_settings.json`.")
+                            help="Path to the JSON file containing all settings. Default is `conf/ckan_updater.json`.")
         parser.add_argument('-d', '--date',
                             default=date.today().isoformat(),
                             help="The date to be used as `date_updated`. Default is today.")
@@ -47,14 +43,11 @@ class CKANMetadataUpdater:
         parser = self.init_parser()
         args = parser.parse_args()
         if not config:
-            logging.info(f" reading patch data from {args.patch}")
-            self.patch_data = self.read_json(args.patch)
-
             logging.info(f" reading config from {args.config}")
-            self.conf_data = self.read_json(args.config)
-        else:
-            self.patch_data = config['patch_data']
-            self.conf_data = config['conf_data']
+            config = self.read_json(args.config)
+        
+        self.patch_data = config['dataset']
+        self.conf_data = config['connection']
 
         datenregister_base = self.conf_data['ckan_base']
 
