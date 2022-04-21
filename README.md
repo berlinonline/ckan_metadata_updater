@@ -119,9 +119,8 @@ If the config file is present at the default location, `metadata_updater` can be
 
 ```
 (updater) berlin_dataportal_usage % metadata_updater
-INFO:root: reading patch data from metadata/dataset.json
-INFO:root: reading config from conf/ckan_settings.json
-INFO:root: setting up CKAN connector at https://url.of.ckan.net (as 'berlin_dataset_updater/1.0 (+https://github.com/berlinonline/berlin_dataset_updater)')
+INFO:root: reading config from conf/ckan_updater.json
+INFO:root: setting up CKAN connector at https://url.of.ckan.net (as 'ckan_metadata_updater/0.2.0 (+https://github.com/berlinonline/ckan_metadata_updater)')
 INFO:root: reading remote metadata for name_or_id_of_the_dataset
 INFO:root: running <function apply_patch at 0x10fd1b5e0>
 INFO:root: apply_patch - id: name_or_id_of_the_dataset
