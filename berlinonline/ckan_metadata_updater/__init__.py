@@ -72,6 +72,7 @@ class CKANMetadataUpdater:
         logging.info(f" response: {response}")
 
     def run(self):
+        logging.info(f"patch_data: {self.patch_data}")
         # get metadata from CKAN
         self.get_remote_metadata(self.patch_data['id'])
 
